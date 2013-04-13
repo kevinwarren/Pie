@@ -1,1 +1,1 @@
-This is a temp directory required by php-yui-compressor
+This is a tempory folder required by php-yui-compressor
