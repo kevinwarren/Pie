@@ -1,9 +1,14 @@
 # Pie v1.0.0
 ============
 
-The `less`, `css` &amp; `js`, `compiler` &amp; `compressor`
+`Pie` is a PHP class to compile `less` to `css` and compress/minify `css` &amp; `js` files eg. `pie.min.css` &amp; `pie.min.js`
 
-### How to use Pie to compile less to css &amp; compress (minify) css &amp; js files into one css file & one js file
+The Pie class makes use of:
+ lessphp <http://leafo.net/lessphp> also licensed under the The MIT License (MIT)
+ php-yui-compressor <https://github.com/gpbmike/PHP-YUI-Compressor>
+ BootstrapCDN <http://www.bootstrapcdn.com>
+
+### How to use Pie to 
 
 ```php
 <?php
