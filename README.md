@@ -1,4 +1,4 @@
-# Pie v1.0.0
+# Pie v1.0.1
 ============
 
 Pie is a PHP class to compile less to css and compress/minify css &amp; js files eg. `pie.min.css` &amp; `pie.min.js`
