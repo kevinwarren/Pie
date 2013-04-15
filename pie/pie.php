@@ -1,7 +1,7 @@
 <?php
 /*!
- * Pie v1.0.0
- * Last Edit 13/04/2013
+ * Pie v1.0.1
+ * Last Edit 15/04/2013
  *
  * Copyright (c) 2013 Kevin Warren
  * Licensed under the The MIT License (MIT)
@@ -16,7 +16,7 @@ require_once 'yuicompressor.php';
 
 # pie class
 class pie {
-  
+	
 	# set current yuicompressor.jar file - http://yui.github.io/yuicompressor/
 	private $jarPath = 'pie/yuicompressor-2.4.7.jar';
 	
@@ -45,6 +45,11 @@ class pie {
 		echo '</head><body><div class="container-fluid">';
 		
 		echo '<h1 class="well">Pie - The less, css &amp; js, compiler &amp; compressor</h1>';
+		
+		# set options if argument is passed
+		foreach ($options as $option => $value) {
+			$this->setOption($option, $value);
+		}
 		
 		$error = false;
 		# check yuicompressor.jar file exists
@@ -94,12 +99,7 @@ class pie {
 		$this->less = new lessc;
 		
 		# invoke php-yui-compressor class
-		$this->yui = new YUICompressor($this->jarPath, $this->tempPath, $options);
-		
-		# set options if argument is passed
-		foreach ($options as $option => $value) {
-			$this->setOption($option, $value);
-		}
+		$this->yui = new YUICompressor($this->jarPath, $this->tempPath, $this->options);
 		
 		echo '<div class="alert alert-info"><strong>Info!</strong> Pie is ready for the meat &amp; veg a.k.a files.</div>';
 		
