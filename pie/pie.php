@@ -1,7 +1,7 @@
 <?php
 /*!
- * Pie v1.0.1
- * Last Edit 15/04/2013
+ * Pie v1.0.2
+ * Last Edit 22/04/2013
  *
  * Copyright (c) 2013 Kevin Warren
  * Licensed under the The MIT License (MIT)
@@ -27,7 +27,8 @@ class pie {
 	private $options = array('comments'=>'', 'cssOutputPath'=>'assets/css/pie.min.css', 'jsOutputPath'=>'assets/css/pie.min.js', 'linebreak'=>false, 'verbose'=>false, 'nomunge'=>false, 'semi'=>false, 'nooptimize'=>false);
 	
 	private $less;
-	private $yui;
+	private $yuiCss;
+	private $yuiJs;
 	private $css = '';
 	private $js = '';
 	private $cssMin = '';
@@ -98,8 +99,11 @@ class pie {
 		# invoke lessphp class
 		$this->less = new lessc;
 		
-		# invoke php-yui-compressor class
-		$this->yui = new YUICompressor($this->jarPath, $this->tempPath, $this->options);
+		# invoke php-yui-compressor classes
+		$this->options['type'] = 'css';
+		$this->yuiCss = new YUICompressor($this->jarPath, $this->tempPath, $this->options);
+		$this->options['type'] = 'js';
+		$this->yuiJs = new YUICompressor($this->jarPath, $this->tempPath, $this->options);
 		
 		echo '<div class="alert alert-info"><strong>Info!</strong> Pie is ready for the meat &amp; veg a.k.a files.</div>';
 		
@@ -144,22 +148,18 @@ class pie {
 	# bake the pie!
 	public function bake() {
 		if (!empty($this->css)) {
-			# set type to css
-			$this->yui->setOption('type', 'css');
 			# add string
-			$this->yui->addString($this->css);
+			$this->yuiCss->addString($this->css);
 			# compress
-			$this->cssMin .= $this->yui->compress();
+			$this->cssMin .= $this->yuiCss->compress();
 			# save compressed css to file
 			file_put_contents($this->options['cssOutputPath'], $this->options['comments'] . $this->cssMin);
 		}
 		if (!empty($this->js)) {
-			# set type to js
-			$this->yui->setOption('type', 'js');
 			# add string
-			$this->yui->addString($this->js);
+			$this->yuiJs->addString($this->js);
 			# compress
-			$this->jsMin .= $this->yui->compress();
+			$this->jsMin .= $this->yuiJs->compress();
 			# save compressed js to file
 			file_put_contents($this->options['jsOutputPath'], $this->options['comments'] . $this->jsMin);
 		}
