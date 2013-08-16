@@ -5,7 +5,7 @@ require_once 'pie/pie.php';
 
 # set comments for top of output files
 $comments = "/*!\n";
-$comments .= " * Pie v1.0.0\n";
+$comments .= " * Pie v1.1.0\n";
 $comments .= " * Last Edit " . date('d/m/Y') . "\n";
 $comments .= " *\n";
 $comments .= " * Copyright (c) " . date('Y') . " Kevin Warren\n";
