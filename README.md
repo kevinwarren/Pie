@@ -1,4 +1,4 @@
-# Pie v1.0.2
+# Pie v1.1.0
 ============
 
 Pie is a PHP class to compile less to css and compress/minify css &amp; js files eg. `pie.min.css` &amp; `pie.min.js`
@@ -21,7 +21,7 @@ require_once 'pie/pie.php';
 
 # set comments for top of output files
 $comments = "/*!\n";
-$comments .= " * Something v1.0.0\n";
+$comments .= " * Something v1.1.0\n";
 $comments .= " * Last Edit " . date('d/m/Y') . "\n";
 $comments .= " *\n";
 $comments .= " * Copyright (c) " . date('Y') . " Someone\n";
