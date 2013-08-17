@@ -39,7 +39,9 @@ $pie = new pie($options);
 $pie->add('assets/less/pie.less');
 $pie->add('assets/css/pie.css');
 $pie->add('assets/js/pie.js');
-$pie->add('assets/js/pie-more.js');
+
+# add a file & don't compress
+$pie->add('assets/js/pie.min.js', false);
 
 # bake that pie & save minified files
 $pie->bake();
