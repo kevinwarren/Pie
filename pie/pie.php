@@ -1,7 +1,7 @@
 <?php
 /*!
- * Pie v1.1.0
- * Last Edit 16/08/2013
+ * Pie v1.1.1
+ * Last Edit 17/08/2013
  *
  * Copyright (c) 2013 Kevin Warren
  * Licensed under the The MIT License (MIT)
@@ -126,6 +126,8 @@ class pie {
 						$this->compress('css');
 					} else {
 						$this->cssMin .= $this->css;
+						# clear css
+						$this->css = '';
 					}
 				} catch (exception $e) {
 					echo '<div class="alert alert-danger"><strong>Fatal Error!</strong> ' . $e->getMessage() . '</div>';
@@ -139,6 +141,8 @@ class pie {
 					$this->compress('css');
 				} else {
 					$this->cssMin .= $this->css;
+					# clear css
+					$this->css = '';
 				}
 				echo '<div class="alert alert-info"><strong>Info!</strong> ' . $file . ' added.</div>';
 			} elseif (substr($file, -3) == '.js') {
@@ -149,6 +153,8 @@ class pie {
 					$this->compress('js');
 				} else {
 					$this->jsMin .= $this->js;
+					# clear js
+					$this->js = '';
 				}
 				echo '<div class="alert alert-info"><strong>Info!</strong> ' . $file . ' added.</div>';
 			} else {
@@ -171,7 +177,7 @@ class pie {
 				# clear css
 				$this->css = '';
 				# compress
-				$this->cssMin .= $this->yui->compress();
+				$this->cssMin .= str_replace(' !important', '!important', $this->yui->compress());
 			}
 			break;
 		case 'js':
